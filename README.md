@@ -19,4 +19,5 @@ took me to answer.
 
 ## TODO
 
+- [ ] Make processor for results csv
 - [ ] Find a good criterion for perfect pitch following the evaluation results.
