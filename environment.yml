@@ -8,5 +8,6 @@ dependencies:
   - matplotlib
   - pandas
   - pip
+  - easygui
   - pip:
-      - musicalbeeps
+      - gensound
