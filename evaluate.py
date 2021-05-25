@@ -5,8 +5,8 @@ import pandas as pd
 import time
 
 # Parameters
-n = 3
-duration = 0.5
+n = 100
+duration = 2
 lower_octave_limit = 3
 higher_octave_limit = 6  # This octave is not included in the test
 
