@@ -21,6 +21,10 @@ def get_octave(note):
     return int(note[1])
 
 
+def get_note_without_octave(note):
+    return note[:-1]
+
+
 def play_note(note, duration):
     # Get sine wave
     s = gensound.Sine(note, duration * 1000.0)
@@ -42,4 +46,33 @@ def show_gui():
 
 
 def is_correct(note, answer):
-    return note[:-1] == answer
+    return get_note_without_octave(note) == answer
+
+
+def note_to_number(note):
+    note_to_number_dict = {}
+    note_to_number_dict["C"] = 0
+    note_to_number_dict["C#"] = 1
+    note_to_number_dict["D"] = 2
+    note_to_number_dict["D#"] = 3
+    note_to_number_dict["E"] = 4
+    note_to_number_dict["F"] = 5
+    note_to_number_dict["F#"] = 6
+    note_to_number_dict["G"] = 7
+    note_to_number_dict["G#"] = 8
+    note_to_number_dict["A"] = 9
+    note_to_number_dict["A#"] = 10
+    note_to_number_dict["B"] = 11
+
+    return note_to_number_dict[note]
+
+
+def get_distance(note_1, note_2):
+    note_1 = note_to_number(note_1)
+    note_2 = note_to_number(note_2)
+    low_note = min([note_1, note_2])
+    high_note = max([note_1, note_2])
+    distance_1 = high_note - low_note
+    distance_2 = 12 + low_note - high_note
+
+    return min([distance_1, distance_2])
