@@ -26,10 +26,8 @@ def get_note_without_octave(note):
 
 
 def play_note(note, duration):
-    # Get sine wave
-    s = gensound.Sine(note, duration * 1000.0)
-
-    # TODO Compensate amplitude?
+    # Get signal
+    s = gensound.Sawtooth(note, duration * 1000.0)
 
     # Add fade
     fade_in = gensound.transforms.Fade(is_in=True, duration=100.0)
