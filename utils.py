@@ -2,12 +2,31 @@
 import gensound
 import numpy as np
 import easygui
+import curses
+import time
 
 NOTES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
 
 
-def get_list_of_notes(lower_octave_limit, higher_octave_limit):
-    notes = NOTES
+def input_char(message):
+    try:
+        win = curses.initscr()
+        win.addstr(0, 0, message)
+        while True:
+            ch = win.getch()
+            if ch in range(32, 127):
+                break
+            time.sleep(0.05)
+    finally:
+        curses.endwin()
+    return chr(ch)
+
+
+def get_list_of_notes(lower_octave_limit, higher_octave_limit, exclude=None):
+    notes = NOTES.copy()
+    if exclude:
+        for note in exclude:
+            notes.remove(note)
     notes_with_octaves = []
     for i in range(lower_octave_limit, higher_octave_limit):
         for note in notes:
